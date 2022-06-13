@@ -3,7 +3,7 @@ using namespace std;
 
 
 int main() {
-	char name[100];
+	char name[51];
 	cin >> name;
 	cout << name << "??!" << endl;
 	return 0;
