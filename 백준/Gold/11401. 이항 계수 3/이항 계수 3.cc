@@ -27,10 +27,10 @@ long long nCk(long long n, long long k) {
 	if (k == 0) return 1;
 	if (k == 1) return n % modNum;
 
-	long long A = 1;
+	long long A = n;
 
-	for (long long i = 1; i <=n; i++) {
-		A *= i;
+	for (long long i = 1; i <k; i++) {
+		A *= n-i;
 		A %= modNum;
 	}
 
@@ -39,10 +39,7 @@ long long nCk(long long n, long long k) {
 		temp *= i;
 		temp %= modNum;
 	}
-	for (long long i = 1;i <= n - k;i++) {
-		temp *= i;
-		temp %= modNum;
-	}
+	
 
 	long long B = squrMod(temp, modNum - 2, modNum);
 
