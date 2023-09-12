@@ -2,47 +2,47 @@
 #include <string>
 using namespace std;
 
-bool palindrome(const string& str, int left, int right)
+bool palindrome(string::iterator front, string::iterator back)
 {
-    while(left < right)
+    while(front < back)
     {
-        if(str[left] != str[right]) return false;
-        ++left; --right;
+        if(*front != *back) return false;
+        ++front; --back;
     }
     return true;
 }
 
-int solution(const string& str)
+int solution(string& str)
 {
-    //string::iterator front = str.begin();
-    //string::iterator back = str.end() - 1;
-    int left = 0;
-    int right = str.length()-1;
+    string::iterator front = str.begin();
+    string::iterator back = str.end() - 1;
+    
 
-    while(left < right)
+    while(front < back)
     {
-        if(str[left] != str[right])
+        
+        if(*front != *back)
         {
-            if(str[left+1] == str[right])
+            if(*(front+1) == *back)
             {
-                if(palindrome(str, left+1, right)) return 1;               
+                if(palindrome(front+1, back)) return 1;               
             }
-            if(str[left] == str[right-1])
+            if(*front == *(back-1))
             {
-                if(palindrome(str, left, right-1)) return 1;
+                if(palindrome(front, back-1)) return 1;
             }
-
+            
+            
             return 2;
             
         }
-        ++left; --right;
+        ++front; --back;
     }
     return 0;
 }
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+    ios::sync_with_stdio(false); cin.tie(NULL);
     int testcase; cin >> testcase;
     while(testcase--)
     {
