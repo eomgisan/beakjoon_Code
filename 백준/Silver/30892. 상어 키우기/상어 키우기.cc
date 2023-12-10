@@ -40,12 +40,9 @@ int main()
             if(iter == arr.begin()) K = 0;
             else{
                 // case 2 : begin이 아닐경우 -> 이전꺼 먹기
-                auto temp = iter--;
-                auto before = iter;
-                iter = temp;
-
-                T += *(before);
-                arr.erase(before);
+              
+                T += *(--iter);
+                iter = arr.erase(iter);
                 --K;
             }
             
